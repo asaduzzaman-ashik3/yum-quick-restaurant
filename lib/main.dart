@@ -40,17 +40,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        backgroundColor: Color(0xFFF5CB58),
-        title: Text(widget.title),
-      ),
+
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
         items: const [
-          Icon(Icons.home_outlined, size: 30, color: Colors.white),
           Icon(Icons.restaurant_menu_outlined, size: 30, color: Colors.white),
           Icon(Icons.favorite_outlined, size: 30, color: Colors.white),
+          Icon(Icons.home_outlined, size: 30, color: Colors.white),
+          
           Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white),
           Icon(Icons.person_outlined, size: 30, color: Colors.white),
         ],
@@ -69,9 +67,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: IndexedStack(
         index: _page,
         children: [
-          HomeScreen(),
           FoodsScreen(),
-          FavouriteScreen(),
+          FavouriteScreen(title: "Favourite",),
+          HomeScreen(title: "Home",),
           OrdersScreen(),
           ProfileScreen(),
         ],
