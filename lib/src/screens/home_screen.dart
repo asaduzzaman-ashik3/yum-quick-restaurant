@@ -83,6 +83,7 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: Color(0xFfF5F5F5),
       appBar: MainAppbar(title: "Home"),
       endDrawer: EndDrawer(),
       body: SingleChildScrollView(
@@ -116,9 +117,23 @@ class HomeScreen extends StatelessWidget {
                   );
                 }).toList(),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 5),
+              Divider(thickness: 0.7,color: Color(0xFFFFD8C7,),),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Best Seller",style: TextStyle(color: Color(0xFF391713),fontWeight: FontWeight.w600, fontSize: 18),),
+                  Row(
+                    children: [
+                      Text("View All",style: TextStyle(color: Color(0xFfE95322),fontSize: 12),),
+                      Icon(Icons.chevron_right,color: Color(0xFfE95322),)
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: 10),
 
-              // Product cards horizontal scroll
               SizedBox(
                 height: 120,
                 child: ListView.builder(
