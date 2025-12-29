@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBody: true,
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
-        index: 0,
+        index: 2,
         items: const [
           Icon(Icons.restaurant_menu, size: 30, color: Colors.white),
           Icon(Icons.favorite, size: 30, color: Colors.white),
