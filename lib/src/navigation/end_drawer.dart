@@ -5,84 +5,88 @@ class EndDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> drawerNavigation = const [
+      {
+        'icon': Icons.cookie_outlined,
+        'text': 'We have added a product you might like',
+      },
+      {
+        'icon': Icons.favorite_border,
+        'text': 'One of your favorites is on promotion.',
+      },
+      {
+        'icon': Icons.shopping_bag_outlined,
+        'text': 'Your order has been delivered',
+      },
+      {
+        'icon': Icons.delivery_dining_outlined,
+        'text': 'The delivery is on its way',
+      },
+    ];
+
     return Drawer(
+      backgroundColor: const Color(0xFFE95322),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(50)),
+      ),
+      width: MediaQuery.of(context).size.width * 0.85,
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Color(0xFFE95322),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'Yum Quick Restaurant',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Color(0xFFE95322)),
+            child: Align(
+              alignment: Alignment.center,
+              child: Row(
+                spacing: 16,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.notifications, color: Colors.white, size: 45),
+                  Text(
+                    "Notifications",
+                    style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Menu & Settings',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Account'),
-            onTap: () {
-              Navigator.pop(context);
-              // Navigate to profile or account page
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () {
-              Navigator.pop(context);
-              // Navigate to settings page
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
-            onTap: () {
-              Navigator.pop(context);
-              // Handle notifications
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.help),
-            title: Text('Help & Support'),
-            onTap: () {
-              Navigator.pop(context);
-              // Handle help and support
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.info),
-            title: Text('About'),
-            onTap: () {
-              Navigator.pop(context);
-              // Handle about page
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            onTap: () {
-              Navigator.pop(context);
-              // Handle logout
+
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: drawerNavigation.length,
+            itemBuilder: (context, index) {
+              final item = drawerNavigation[index];
+              return Column(
+                children: [
+                  ListTile(
+                    leading: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Icon(
+                        item['icon'],
+                        color: const Color(0xFFE95322),
+                      ),
+                    ),
+                    title: Text(
+                      item['text'],
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const Divider(color: Colors.white70),
+                ],
+              );
             },
           ),
         ],
