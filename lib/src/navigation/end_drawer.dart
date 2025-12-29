@@ -27,7 +27,7 @@ class EndDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: const Color(0xFFE95322),
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(50)),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(70),bottomLeft: Radius.circular(70)),
       ),
       width: MediaQuery.of(context).size.width * 0.85,
       child: ListView(

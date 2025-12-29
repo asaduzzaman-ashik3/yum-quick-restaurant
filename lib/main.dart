@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _page = 0;
+  int _page = 2;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override
@@ -44,9 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
         key: _bottomNavigationKey,
         index: 0,
         items: const [
-          Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.restaurant_menu, size: 30, color: Colors.white),
           Icon(Icons.favorite, size: 30, color: Colors.white),
+          Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.shopping_cart, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
         ],
@@ -65,9 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: IndexedStack(
         index: _page,
         children: [
-          HomeScreen(title: "Home",),
           FoodsScreen(),
           FavouriteScreen(title: "Favourite",),
+          HomeScreen(title: "Home",),
           OrdersScreen(),
           ProfileScreen(),
         ],
