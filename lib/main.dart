@@ -33,24 +33,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _page = 2;
+  int _page = 0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: 0,
         items: const [
-          Icon(Icons.restaurant_menu_outlined, size: 30, color: Colors.white),
-          Icon(Icons.favorite_outlined, size: 30, color: Colors.white),
-          Icon(Icons.home_outlined, size: 30, color: Colors.white),
-          
-          Icon(Icons.shopping_cart_outlined, size: 30, color: Colors.white),
-          Icon(Icons.person_outlined, size: 30, color: Colors.white),
+          Icon(Icons.home, size: 30, color: Colors.white),
+          Icon(Icons.restaurant_menu, size: 30, color: Colors.white),
+          Icon(Icons.favorite, size: 30, color: Colors.white),
+          Icon(Icons.shopping_cart, size: 30, color: Colors.white),
+          Icon(Icons.person, size: 30, color: Colors.white),
         ],
         color: Color(0xFFE95322),
         buttonBackgroundColor: Color(0xFFE95322),
@@ -67,9 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: IndexedStack(
         index: _page,
         children: [
+          HomeScreen(title: "Home",),
           FoodsScreen(),
           FavouriteScreen(title: "Favourite",),
-          HomeScreen(title: "Home",),
           OrdersScreen(),
           ProfileScreen(),
         ],

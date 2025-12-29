@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../navigation/end_drawer.dart';
+import '../navigation/main_appbar.dart';
 
 class FoodsScreen extends StatelessWidget {
   const FoodsScreen({super.key});
@@ -6,10 +8,9 @@ class FoodsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Food"),
-      ),
-      body: Center(child: Text("Food"),),
+      appBar: MainAppbar(title: "Foods"),
+      endDrawer: EndDrawer(),
+      body: Center(child: Text("Foods"),),
     );
   }
 }

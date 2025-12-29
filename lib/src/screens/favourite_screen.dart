@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../navigation/end_drawer.dart';
+import '../navigation/main_appbar.dart';
 
 class FavouriteScreen extends StatelessWidget {
   final String title;
@@ -7,11 +9,9 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFF5CB58),
-        title: Text(title),
-      ),
-      body: Center(child: Text("Favourite"),),
+      appBar: MainAppbar(title: "Favourites"),
+      endDrawer: EndDrawer(),
+      body: Center(child: Text("Favourites"),),
     );
   }
 }
