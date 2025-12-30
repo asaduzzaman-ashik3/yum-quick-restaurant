@@ -28,24 +28,6 @@ class FavouriteScreen extends StatelessWidget {
         'rating': '4.7',
         'price': '7.25',
       },
-      {
-        'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
-        'name': 'Pizza Slice',
-        'rating': '4.9',
-        'price': '15.00',
-      },
-      {
-        'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
-        'name': 'Cold Drink',
-        'rating': '4.6',
-        'price': '3.50',
-      },
-      {
-        'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
-        'name': 'Burger',
-        'rating': '4.4',
-        'price': '11.75',
-      },
     ];
 
     return Scaffold(

@@ -24,6 +24,18 @@ class _FoodsScreenState extends State<FoodsScreen> {
       {'icon': 'assets/icons/drinks.svg', 'label': 'Drinks'},
     ];
 
+    List<Map<String, String>> getFilteredFoods(
+        List<Map<String, String>> foodItems,
+        ) {
+      if (selectedCategory == 'All') {
+        return foodItems;
+      }
+      return foodItems
+          .where((food) => food['category'] == selectedCategory)
+          .toList();
+    }
+
+
     // Sample food data
     final List<Map<String, String>> foodItems = [
       {
@@ -178,41 +190,36 @@ class _FoodsScreenState extends State<FoodsScreen> {
             children: [
               // Category filter row
               SizedBox(height: 10),
-              SizedBox(
-                height: 60,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length + 1, // +1 for 'All' category
-                  itemBuilder: (context, index) {
-                    String category = index == 0 ? 'All' : categories[index - 1]['label']!;
-                    bool isSelected = selectedCategory == category;
-                    
-                    return GestureDetector(
-                      onTap: () {
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: categories.map((category) {
+                  return Column(
+                    children: [
+                      GestureDetector(onTap: () {
                         setState(() {
-                          selectedCategory = category;
+                          selectedCategory = category['label']!;
                         });
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: isSelected ? Color(0xFFE95322) : Color(0xFFF3E9B5),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Text(
-                            category,
-                            style: TextStyle(
-                              color: isSelected ? Colors.white : Color(0xFF391713),
-                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                            ),
+
+                        child: Container(
+                          width: 50,
+                          height: 60,
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: const Color(0xFFF3E9B5),
                           ),
+                          child: SvgPicture.asset(category['icon']!),
                         ),
                       ),
-                    );
-                  },
-                ),
+                      const SizedBox(height: 5),
+                      Text(
+                        category['label']!,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  );
+                }).toList(),
               ),
               SizedBox(height: 16),
               // Food items grid
