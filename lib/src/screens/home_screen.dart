@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yum_quick_restaurent/src/navigation/end_drawer.dart';
@@ -16,6 +17,13 @@ class HomeScreen extends StatelessWidget {
       {'icon': 'assets/icons/vegan.svg', 'label': 'Vegan'},
       {'icon': 'assets/icons/desserts.svg', 'label': 'Desserts'},
       {'icon': 'assets/icons/drinks.svg', 'label': 'Drinks'},
+    ];
+
+    final List<String> images = [
+      'https://i.ibb.co.com/bMJtwD13/7967079.jpg',
+      'https://i.ibb.co.com/G3kNYNrv/7783920.jpg',
+      'https://i.ibb.co.com/N2XxTdZP/Food-Facebook-Banner-05.jpg',
+
     ];
 
     // 10 fake products with real images
@@ -90,6 +98,7 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
+            spacing: 4,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Categories Row
@@ -117,7 +126,6 @@ class HomeScreen extends StatelessWidget {
                   );
                 }).toList(),
               ),
-              const SizedBox(height: 5),
               Divider(thickness: 0.7,color: Color(0xFFFFD8C7,),),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,8 +140,6 @@ class HomeScreen extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: 10),
-
               SizedBox(
                 height: 120,
                 child: ListView.builder(
@@ -184,6 +190,25 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+          SizedBox(height: 5,),
+          CarouselSlider(
+            items: images.map((img) {
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  img,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 130,
+              autoPlay: true,
+              enlargeCenterPage: true,
+              viewportFraction: 1,
+            ),
+          )
             ],
           ),
         ),
