@@ -23,7 +23,6 @@ class HomeScreen extends StatelessWidget {
       'https://i.ibb.co.com/bMJtwD13/7967079.jpg',
       'https://i.ibb.co.com/G3kNYNrv/7783920.jpg',
       'https://i.ibb.co.com/N2XxTdZP/Food-Facebook-Banner-05.jpg',
-
     ];
 
     // 10 fake products with real images
@@ -126,18 +125,31 @@ class HomeScreen extends StatelessWidget {
                   );
                 }).toList(),
               ),
-              Divider(thickness: 0.7,color: Color(0xFFFFD8C7,),),
+              Divider(thickness: 0.7, color: Color(0xFFFFD8C7)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Best Seller",style: TextStyle(color: Color(0xFF391713),fontWeight: FontWeight.w600, fontSize: 18),),
+                  Text(
+                    "Best Seller",
+                    style: TextStyle(
+                      color: Color(0xFF391713),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
+                  ),
                   Row(
                     children: [
-                      Text("View All",style: TextStyle(color: Color(0xFfE95322),fontSize: 12),),
-                      Icon(Icons.chevron_right,color: Color(0xFfE95322),)
+                      Text(
+                        "View All",
+                        style: TextStyle(
+                          color: Color(0xFfE95322),
+                          fontSize: 12,
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, color: Color(0xFfE95322)),
                     ],
-                  )
+                  ),
                 ],
               ),
               SizedBox(
@@ -190,27 +202,172 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
-          SizedBox(height: 5,),
-          CarouselSlider(
-            items: images.map((img) {
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  img,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              SizedBox(height: 5),
+              CarouselSlider(
+                items: images.map((img) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      img,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+                  );
+                }).toList(),
+                options: CarouselOptions(
+                  height: 130,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 1,
                 ),
-              );
-            }).toList(),
-            options: CarouselOptions(
-              height: 130,
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 1,
-            ),
-          )
+              ),
+              SizedBox(height: 3),
+              Text(
+                "Recommend",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 3),
+              // Recommended food cards
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.8',
+                    price: '12.99',
+                  ),
+                  SizedBox(width: 10),
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.5',
+                    price: '15.50',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.8',
+                    price: '12.99',
+                  ),
+                  SizedBox(width: 10),
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.5',
+                    price: '15.50',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.8',
+                    price: '12.99',
+                  ),
+                  SizedBox(width: 10),
+                  _buildRecommendedFoodCard(
+                    image:
+                        'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.5',
+                    price: '15.50',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildRecommendedFoodCard(
+                    image:
+                    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.8',
+                    price: '12.99',
+                  ),
+                  SizedBox(width: 10),
+                  _buildRecommendedFoodCard(
+                    image:
+                    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+                    rating: '4.5',
+                    price: '15.50',
+                  ),
+                ],
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  static Widget _buildRecommendedFoodCard({
+    required String image,
+    required String rating,
+    required String price,
+  }) {
+    return Expanded(
+      child: Container(
+        height: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover),
+        ),
+        child: Stack(
+          children: [
+            // Rating at top left
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.star, color: Colors.amber, size: 14),
+                    SizedBox(width: 2),
+                    Text(
+                      rating,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Price at bottom right
+            Positioned(
+              bottom: 8,
+              right: 8,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Color(0xFFE95322),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  '\$$price',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
