@@ -35,7 +35,6 @@ class _FoodsScreenState extends State<FoodsScreen> {
           .toList();
     }
 
-
     // Sample food data
     final List<Map<String, String>> foodItems = [
       {
@@ -193,34 +192,65 @@ class _FoodsScreenState extends State<FoodsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: categories.map((category) {
-                  return Column(
-                    children: [
-                      GestureDetector(onTap: () {
-                        setState(() {
-                          selectedCategory = category['label']!;
-                        });
-                      },
+                  final bool isSelected =
+                      selectedCategory == category['label'];
 
-                        child: Container(
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedCategory = category['label']!;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 250),
                           width: 50,
                           height: 60,
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: const Color(0xFFF3E9B5),
+                            color: isSelected
+                                ? const Color(0xFFE95322) // selected bg
+                                : const Color(0xFFF3E9B5),
+                            boxShadow: isSelected
+                                ? [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 6,
+                                offset: const Offset(0, 3),
+                              ),
+                            ]
+                                : [],
                           ),
-                          child: SvgPicture.asset(category['icon']!),
+                          child: SvgPicture.asset(
+                            category['icon']!,
+                            colorFilter: isSelected
+                                ? const ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            )
+                                : null,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        category['label']!,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                    ],
+                        const SizedBox(height: 6),
+                        Text(
+                          category['label']!,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.normal,
+                            color: isSelected
+                                ? const Color(0xFFE95322)
+                                : Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 }).toList(),
               ),
+
               SizedBox(height: 16),
               // Food items grid
               GridView.builder(
