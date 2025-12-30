@@ -89,6 +89,40 @@ class HomeScreen extends StatelessWidget {
       },
     ];
 
+    // Recommended food items
+    final List<Map<String, String>> recommendedFoods = [
+      {
+        'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.8',
+        'price': '12.99',
+      },
+      {
+        'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.5',
+        'price': '15.50',
+      },
+      {
+        'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.7',
+        'price': '11.25',
+      },
+      {
+        'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.9',
+        'price': '18.75',
+      },
+      {
+        'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.6',
+        'price': '9.99',
+      },
+      {
+        'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80',
+        'rating': '4.4',
+        'price': '14.20',
+      },
+    ];
+
     return Scaffold(
       backgroundColor: Color(0xFfF5F5F5),
       appBar: MainAppbar(title: "Home"),
