@@ -24,8 +24,6 @@ class _FoodsScreenState extends State<FoodsScreen> {
       {'icon': 'assets/icons/drinks.svg', 'label': 'Drinks'},
     ];
 
-
-    // Sample food data
     final List<Map<String, String>> foodItems = [
       {
         'name': 'Chocolate Cake',
