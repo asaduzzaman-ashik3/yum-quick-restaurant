@@ -24,16 +24,6 @@ class _FoodsScreenState extends State<FoodsScreen> {
       {'icon': 'assets/icons/drinks.svg', 'label': 'Drinks'},
     ];
 
-    List<Map<String, String>> getFilteredFoods(
-        List<Map<String, String>> foodItems,
-        ) {
-      if (selectedCategory == 'All') {
-        return foodItems;
-      }
-      return foodItems
-          .where((food) => food['category'] == selectedCategory)
-          .toList();
-    }
 
     // Sample food data
     final List<Map<String, String>> foodItems = [
@@ -178,6 +168,7 @@ class _FoodsScreenState extends State<FoodsScreen> {
         'rating': '4.5',
       },
     ];
+
 
     return Scaffold(
       appBar: MainAppbar(title: "Foods"),
